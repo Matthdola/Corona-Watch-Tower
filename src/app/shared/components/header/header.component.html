@@ -1,42 +1,34 @@
 <mat-toolbar color="primary">
     <mat-toolbar-row>
-        <!--
-        <span>Third Line</span>
-        <span class="example-spacer"></span>
-        <mat-icon class="example-icon" aria-hidden="false" aria-label="Example heart icon">favorite</mat-icon>
-        <mat-icon class="example-icon" aria-hidden="false" aria-label="Example delete icon">delete</mat-icon>
-    -->
-        <button mat-icon-button>
+        <button mat-icon-button (click)="toggleSideBar()">
         <mat-icon>menu</mat-icon>
       </button>
 
-        <span> APP LOGO </span>
-
-        <div fxLayout="row">
-            <ul fxFlex fxLayout="row" fxLayoutAlign="flex-end" fxLayoutGap="20px">
-                <li>
-                    <button mat-icon-button>
-                      <mat-icon>settings</mat-icon>
-                    </button>
-                </li>
-                <li>
-                    <button mat-icon-button>
-                    <mat-icon>help_outline</mat-icon>
+        <span> Corona Watch Tower </span>
+        <span class="flex-spacer"></span>
+        <span fxLayout="row">
+            <span fxFlex>
+              <button mat-icon-button>
+                  <mat-icon>settings</mat-icon>
+                </button>
+          </span>
+        <span fxFlex>
+              <button mat-icon-button>
+                  <mat-icon>help_outline</mat-icon>
+                </button>
+          </span>
+        <span fxFlex>
+              <button mat-button [matMenuTriggerFor]="menu">
+                  <mat-icon>person_outline</mat-icon>
+                </button>
+              <mat-menu #menu="matMenu">
+                  <button mat-menu-item>
+                    <mat-icon>exit_to_app</mat-icon>
+                    Sign out
                   </button>
-                </li>
-                <li>
-                    <button mat-button [matMenuTriggerFor]="menu">
-                      <mat-icon>person_outline</mat-icon>
-                    </button>
-                    <mat-menu #menu="matMenu">
-                        <button mat-menu-item>
-                          <mat-icon>exit_to_app</mat-icon>
-                          Sign out
-                        </button>
-                    </mat-menu>
-                    <mat-icon>menu</mat-icon>
-                </li>
-            </ul>
-        </div>
+              </mat-menu>
+              <mat-icon>menu</mat-icon>
+          </span>
+        </span>
     </mat-toolbar-row>
 </mat-toolbar>

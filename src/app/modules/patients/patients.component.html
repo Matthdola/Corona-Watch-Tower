@@ -1,0 +1,193 @@
+<div fxLayout="column" fxLayoutGap="2px">
+    <div class="ml-2" fxFlex="10">
+        <div fxLayout="row" class="full-width mt-2">
+            <span fxFlex="60" class="text-left">
+          <div class="form-group has-clear">
+              <mat-form-field class="full-width">
+                <input matInput class="full-width" placeholder="Search for ..." type="text" value="{{searchValue}}">
+              </mat-form-field>
+          </div>
+        </span>
+            <span fxFlex="40" class="text-right">
+
+          <button mat-button (click)="openAddUserDialog()" mat-flat-button color="primary" class="btn-border mr-2" >Ajouter</button>
+          <button mat-button (click)="openAddUserDialog()" mat-flat-button  class="btn-border btn-default mr-2" >Voir detail</button>
+          <button mat-button (click)="openConfirmDeleteUserDialog()" mat-flat-button class="btn btn-warning btn-border mr-2" >Modifier</button>
+          <button mat-button (click)="openConfirmDeleteUserDialog()" mat-flat-button class="btn btn-danger btn-border mr-2" >Supprimer</button>
+        </span>
+        </div>
+    </div>
+    <div class="ml-2 mr-3" fxFlex="90">
+        <table mat-table #userstable [dataSource]="dataSource" class="table table-striped table-bordered">
+            <!-- Checkbox Column -->
+            <ng-container matColumnDef="select">
+                <th *matHeaderCellDef>
+                    <mat-checkbox (change)="$event ? masterToggle() : null" [checked]="selection.hasValue() && isAllSelected()" [indeterminate]="selection.hasValue() && !isAllSelected()" [aria-label]="checkboxLabel()">
+                    </mat-checkbox>
+                </th>
+                <td *matCellDef="let row">
+                    <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? selection.toggle(row) : null" [checked]="selection.isSelected(row)" [aria-label]="checkboxLabel(row)">
+                    </mat-checkbox>
+                </td>
+            </ng-container>
+
+            <!-- Firstname Column -->
+            <ng-container matColumnDef="firstname">
+                <th *matHeaderCellDef>
+                    <span class="ml-2">
+                Prenom
+              </span>
+                </th>
+                <td *matCellDef="let element">
+                    <span class="ml-2">
+                {{element.firstname}}
+              </span>
+                </td>
+            </ng-container>
+
+            <!-- Firstname Column -->
+            <ng-container matColumnDef="lastname">
+                <th *matHeaderCellDef>
+                    <span class="ml-2">
+                    Nom
+                  </span>
+                </th>
+                <td *matCellDef="let element">
+                    <span class="ml-2">
+              {{element.lastname}}
+            </span>
+                </td>
+            </ng-container>
+
+            <!-- Email Column -->
+            <ng-container matColumnDef="email">
+                <th *matHeaderCellDef>
+                    <span class="ml-2">
+                Email
+              </span>
+                </th>
+                <td *matCellDef="let element">
+                    <span class="ml-2">
+                {{element.email}}
+              </span>
+                </td>
+            </ng-container>
+
+            <!-- Phone Column -->
+            <ng-container matColumnDef="phone">
+                <th *matHeaderCellDef>
+                    <span class="ml-2">
+              Telephone
+            </span>
+                </th>
+                <td *matCellDef="let element">
+                    <span class="ml-2">
+              {{element.phone}}
+            </span>
+                </td>
+            </ng-container>
+
+            <!-- Whatsapp number Column -->
+            <ng-container matColumnDef="whatsapp">
+                <th *matHeaderCellDef>
+                    <span class="ml-2">
+                  WhatsApp
+                </span>
+                </th>
+                <td *matCellDef="let element">
+                    <span class="ml-2">
+                  {{element.whatsapp}}
+                </span>
+                </td>
+            </ng-container>
+
+            <!-- Address  Column -->
+            <ng-container matColumnDef="address">
+                <th *matHeaderCellDef>
+                    <span class="ml-2">
+                  Adresse
+                </span>
+                </th>
+                <td *matCellDef="let element">
+                    <span class="ml-2">
+                  {{element.address}}
+                </span>
+                </td>
+            </ng-container>
+
+            <!-- Country  Column -->
+            <ng-container matColumnDef="country">
+                <th *matHeaderCellDef>
+                    <span class="ml-2">
+                  Pays
+                </span>
+                </th>
+                <td *matCellDef="let element">
+                    <span class="ml-2">
+                  {{element.country}}
+                </span>
+                </td>
+            </ng-container>
+
+            <!-- City Column -->
+            <ng-container matColumnDef="city">
+                <th *matHeaderCellDef>
+                    <span class="ml-2">
+                  Ville
+                </span>
+                </th>
+                <td *matCellDef="let element">
+                    <span class="ml-2">
+                  {{element.city}}
+                </span>
+                </td>
+            </ng-container>
+
+            <!-- status  Column -->
+            <ng-container matColumnDef="status">
+                <th *matHeaderCellDef>
+                    <span class="ml-2">
+                  Status
+                </span>
+                </th>
+                <td *matCellDef="let element">
+                    <span class="ml-2">
+                  {{element.status}}
+                </span>
+                </td>
+            </ng-container>
+
+            <!-- Group Column -->
+            <ng-container matColumnDef="group">
+                <th *matHeaderCellDef>
+                    <span class="ml-2">
+                  Groupe
+                </span>
+                </th>
+                <td *matCellDef="let element">
+                    <span class="ml-2">
+                  {{element.group}}
+                </span>
+                </td>
+            </ng-container>
+
+            <!-- Created date Column -->
+            <ng-container matColumnDef="created">
+                <th *matHeaderCellDef>
+                    <span class="ml-2">
+                    Date d'inscription
+                  </span>
+                </th>
+                <td *matCellDef="let element">
+                    <span class="ml-2">
+                    {{element.created}}
+                  </span>
+                </td>
+            </ng-container>
+
+            <tr class="mt-0 mb-0" mat-header-row *matHeaderRowDef="displayedColumns;"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;">
+            </tr>
+        </table>
+    </div>
+</div>

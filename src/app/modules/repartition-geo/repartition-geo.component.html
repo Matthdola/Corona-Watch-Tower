@@ -1,0 +1,15 @@
+<div fxLayout="column" fxLayoutGap="0px">
+    <div class="mt-3" fxFlex="10%">
+        <h3 class="ml-3">Répartition géographique des cas</h3>
+    </div>
+    <div fxFlex="10%">
+    </div>
+    <div fxFlex="80%">
+
+    </div>
+</div>
+<agm-map [latitude]="latitude" [longitude]="longitude" [zoom]="zoom">
+    <agm-marker [latitude]="latitude" [longitude]="longitude"></agm-marker>
+    <!-- <agm-marker *ngFor="let coordinate of coordinates" (markerClick)="openDataItem(coordinate.featureId)" [latitude]="coordinate.latitude" [longitude]="coordinate.longitude">
+    </agm-marker> -->
+</agm-map>

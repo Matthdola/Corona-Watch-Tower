@@ -3,6 +3,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { DefaultComponent } from './layouts/default/default.component';
 import { DashboardComponent } from './modules/dashboard/dashboard.component';
 import { PostsComponent } from './modules/posts/posts.component';
+import { PatientsComponent } from './modules/patients/patients.component';
+import { RepartitionGeoComponent } from './modules/repartition-geo/repartition-geo.component';
 
 
 const routes: Routes = [
@@ -17,6 +19,14 @@ const routes: Routes = [
       {
         path: 'posts',
         component: PostsComponent
+      },
+      {
+        path: 'patients',
+        component: PatientsComponent
+      },
+      {
+        path: 'repartitiongeo',
+        component: RepartitionGeoComponent
       }
     ]
   }
