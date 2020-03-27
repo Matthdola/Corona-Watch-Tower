@@ -1,21 +1,22 @@
 {
   "name": "coronawatchertower",
   "version": "1.0.0",
-  "description": "",
+  "description": "This is corona watcher client.",
   "main": "web.js",
   "scripts": {
-    "start": "node app.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "heroku-prebuild": "echo This runs before Heroku installs your dependencies.",
-    "heroku-postbuild": "npm install --prefix ./client"
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "example",
+    "heroku"
+  ],
+  "author": "matthias-dola",
+  "license": "MIT",
   "dependencies": {
-    "body-parser": "^1.13.3",
-    "express": "^4.13.3"
+    "express": "^4.17.1"
   },
   "engines": {
-    "node": "4.1.1"
+    "node": "10.16.0"
   }
 }
