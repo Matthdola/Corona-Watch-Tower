@@ -1,1 +1,28 @@
-<p>login works!</p>
+<div id="loginContainer">
+    <mat-toolbar id="loginHeader">
+        <span id="loginTitle">User Log in</span>
+    </mat-toolbar>
+    <form id="loginForm" novalidate #loginForm="ngForm" (ngSubmit)="onSubmit()">
+        <mat-dialog-content>
+            <mat-form-field class="full-width">
+                <input matInput fxflex placeholder="Email or Username" type="text" [(ngModel)]="user.name" name="name" #name="ngModel" required>
+                <mat-error *ngIf="name.errors?.required">Username is required</mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="full-width">
+                <input matInput fxflex placeholder="Password" type="password" [(ngModel)]="user.password" name="password" #password="ngModel" required>
+                <mat-error *ngIf="password.errors?.required">Password is required</mat-error>
+            </mat-form-field>
+            <mat-checkbox color="primary" class="full-width" [(ngModel)]="user.remember" name="remember">Remember me</mat-checkbox>
+        </mat-dialog-content>
+
+        <mat-dialog-actions>
+            <button mat-button id="submitBtn" type="submit" class="text-floral-white" [disabled]="loginForm.form.invalid">LOG IN</button>
+            <!--
+          <button mat-button mat-dialog-close>Cancel</button>
+          -->
+            <a (click)="openPasswordResetingPage($event)" class="text-links ml-3">I forgot my password</a>
+            <span class="flex-spacer"></span>
+        </mat-dialog-actions>
+    </form>
+</div>

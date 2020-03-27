@@ -6,18 +6,19 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DefaultModule } from './layouts/default/default.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { UserProfilComponent } from './modules/user-profil/user-profil.component';
-import { PatientMapItemComponent } from './modules/patient-map-item/patient-map-item.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
   declarations: [
     AppComponent,
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     DefaultModule,
     FlexLayoutModule
   ],

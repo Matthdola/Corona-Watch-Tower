@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
+import { Covid19Service } from '../services/covid19.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DashboardService {
-  constructor() {
+  constructor(
+  ) {
   }
 
   bigChart() {

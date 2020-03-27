@@ -38,6 +38,10 @@ import { PatientMapItemComponent } from 'src/app/modules/patient-map-item/patien
 import { UserProfilComponent } from 'src/app/modules/user-profil/user-profil.component';
 import { AgmCoreModule } from '@agm/core';
 
+import { GraphComponent } from 'src/app/visuals/graph/graph.component';
+import { SHARED_VISUALS, LinkVisualComponent, NodeVisualComponent } from 'src/app/visuals/shared';
+import { D3_DIRECTIVES, D3Service, ZoomableDirective, DraggableDirective } from 'src/app/d3';
+
 
 @NgModule({
   declarations: [
@@ -47,7 +51,14 @@ import { AgmCoreModule } from '@agm/core';
     PatientsComponent,
     RepartitionGeoComponent,
     PatientMapItemComponent,
-    UserProfilComponent
+    UserProfilComponent,
+    GraphComponent,
+    NodeVisualComponent,
+    LinkVisualComponent,
+    ZoomableDirective,
+    DraggableDirective,
+    ...SHARED_VISUALS,
+    ...D3_DIRECTIVES
   ],
   imports: [
     CommonModule,
@@ -86,6 +97,9 @@ import { AgmCoreModule } from '@agm/core';
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyCGvQ8knHyLuE4gbs5d2w5mO2tW-8tgVYs'
     })
+  ],
+  providers: [
+    D3Service
   ],
   entryComponents: [
     PatientMapItemComponent

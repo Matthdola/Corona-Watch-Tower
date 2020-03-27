@@ -21,10 +21,10 @@ export class AreaComponent implements OnInit {
         type: 'area'
       },
       title: {
-        text: 'Random DATA'
+        text: 'Recapitulatif Covid 19'
       },
       subtitle: {
-        text: 'Demo'
+        text: 'Situation Covid19'
       },
       /*
       xAxis: {
