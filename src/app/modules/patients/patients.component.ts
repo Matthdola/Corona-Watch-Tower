@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { MatTableDataSource } from '@angular/material/table';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatTableDataSource, MatTable } from '@angular/material/table';
 import { SelectionModel } from '@angular/cdk/collections';
+import { PatientServiceService } from 'src/app/services/patient-service.service';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
 
 export interface PeriodicElement {
   uref: string;
@@ -82,10 +85,45 @@ export class PatientsComponent implements OnInit {
    dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
    selection = new SelectionModel<PeriodicElement>(true, []);
    searchValue: any;
+   patients: any[];
+   loading: boolean;
 
-   constructor() { }
+  @ViewChild(MatTable, {static: true}) patientstable: MatTable<any>;
+  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
+  @ViewChild(MatSort, {static: true}) sort: MatSort;
+
+   constructor(
+     private patientService: PatientServiceService
+   ) { }
 
    ngOnInit() {
+     this.loading = true;
+     this.patients = [];
+     this.patientService.getPatients().subscribe(
+       res => {
+         res.forEach(element => {
+            const item = {
+              uref: element.id,
+              firstname:  element.firstname,
+              lastname: element.lastname,
+              email: element.email,
+              phone: element.telephone1,
+              whatsapp: element.telephone2,
+              address: element.quartier,
+              country: '',
+              city: '',
+              status: ''
+            };
+            this.patients.push(item);
+         });
+         this.dataSource.data = this.patients;
+         this.patientstable.renderRows();
+         this.loading = false;
+       },
+       err => {
+         this.loading = false;
+       }
+     );
    }
 
   openConfirmDeleteUserDialog() {}

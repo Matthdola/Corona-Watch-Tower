@@ -23,7 +23,7 @@ export class DashboardComponent implements OnInit {
   ) {
     this.loading = true;
     let data = null;
-    this.covid19.getReport().subscribe(res => {
+    this.covid19.getSituationReport().subscribe(res => {
       this.loading = false;
       data = res;
       console.log(res);

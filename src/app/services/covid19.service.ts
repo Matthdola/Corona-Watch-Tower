@@ -51,6 +51,10 @@ export class Covid19Service {
     return this.http.get<any>(BASE_URL + '/SituationReports');
   }
 
+  getCountriesWhereCoronavirusHasSpread(): Observable<any[]> {
+    return this.http.get<any[]>(BASE_URL + '/CountriesWhereCoronavirusHasSpread');
+  }
+
   getGlobalData(): Observable<any> {
     return this.http.get<any>(BASE_URL + '/GlobalDataReports');
   }

@@ -18,7 +18,10 @@
         </div>
     </div>
     <div class="ml-2 mr-3" fxFlex="90">
-        <table mat-table #userstable [dataSource]="dataSource" class="table table-striped table-bordered">
+        <div *ngIf="loading">
+            <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+        </div>
+        <table mat-table #patientstable [dataSource]="dataSource" class="table table-striped table-bordered">
             <!-- Checkbox Column -->
             <ng-container matColumnDef="select">
                 <th *matHeaderCellDef>
