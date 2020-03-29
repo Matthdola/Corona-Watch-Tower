@@ -5,6 +5,9 @@ import { DashboardComponent } from './modules/dashboard/dashboard.component';
 import { PostsComponent } from './modules/posts/posts.component';
 import { PatientsComponent } from './modules/patients/patients.component';
 import { RepartitionGeoComponent } from './modules/repartition-geo/repartition-geo.component';
+import { HomeComponent } from './modules/home/home.component';
+import { StudentListComponent } from './modules/student-list/student-list.component';
+import { StudentCreateComponent } from './modules/student-create/student-create.component';
 
 
 const routes: Routes = [
@@ -29,6 +32,18 @@ const routes: Routes = [
         component: RepartitionGeoComponent
       }
     ]
+  },
+  {
+    path: 'courses',
+    component: HomeComponent
+  },
+  {
+    path: 'students',
+    component: StudentListComponent
+  },
+  {
+    path: 'enroll',
+    component: StudentCreateComponent
   }
 ];
 

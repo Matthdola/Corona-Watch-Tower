@@ -1,1 +1,14 @@
-<p>patient-map-item works!</p>
+<div class="card-group">
+    <div class="card">
+        <img *ngIf="link" src="{{link}}" alt="{{countryInformation.Combined_Key}}">
+        <div class="card-body">
+            <h5 class="card-title">{{countryInformation.Combined_Key}}</h5>
+            <p class="card-text">
+                <span>Active: {{countryInformation.Active}}</span><br>
+                <span>Guéris: {{countryInformation.Recovered}}</span><br>
+                <span>Décédés: {{countryInformation.Deaths}}</span>
+            </p>
+            <p class="card-text"><small class="text-muted">Mise à jour le: {{countryInformation.Last_Update | date}}</small></p>
+        </div>
+    </div>
+</div>

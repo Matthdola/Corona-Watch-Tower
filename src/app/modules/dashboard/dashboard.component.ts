@@ -16,18 +16,26 @@ export class DashboardComponent implements OnInit {
   cardChart = [];
   nodes: Node[] = [];
   links: Link[] = [];
+  countries = [];
   loading: boolean;
   constructor(
     private dashboardService: DashboardService,
     private covid19: Covid19Service
   ) {
-    this.loading = true;
+    // this.loading = true;
     let data = null;
+    /*
     this.covid19.getCountriesWhereCoronavirusHasSpread().subscribe(res => {
       this.loading = false;
+      const items = res['table'];
+      items.forEach(element => {
+        this.countries = this.countries.concat(element);
+      });
+      console.log(this.countries);
       data = res;
       console.log(res);
     });
+    */
 
     const N = APP_CONFIG.N,
       getIndex = number => number - 1;

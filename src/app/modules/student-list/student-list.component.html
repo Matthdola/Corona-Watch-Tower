@@ -1,0 +1,39 @@
+<img class="img-fluid" alt="Responsive image" src="">
+<div class="jumbotron" style="background-color: #a9a9a9; height: 50%;">
+    <h1>Welcome to Edureka</h1>
+    <p class="lead">
+        Creating Exciting Angular Projects with Edureka
+    </p>
+</div>
+<div class="container" style="margin-top: 70px;">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let stdt of studentService.getStudents()">
+                <td>{{ stdt.id }}</td>
+                <td>{{ stdt.name }}</td>
+                <td>{{ stdt.email }}</td>
+                <td> <a class="btn btn-primary" (click)="setStudent(stdt)">Show details</a></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="card text-center" *ngIf="selectedStudent">
+        <div class="card-header">
+            #{{selectedStudent.id}}
+        </div>
+        <div class="card-block">
+            <h4 class="card-title">{{selectedStudent.name}}</h4>
+            <p class="card-text">
+                {{ selectedStudent.description}}
+            </p>
+        </div>
+    </div>
+</div>

@@ -7,6 +7,19 @@ export class Covid19Reports {
   table: CovidCase[][];
 }
 
+export class JonsHpkinsData {
+  Province_State: string;
+  Country_Region: string;
+  Last_Update: string;
+  Lat: string;
+  Long_: string;
+  Confirmed: string;
+  Deaths: string;
+  Recovered: string;
+  Active: string;
+  Conbined_Key: string;
+}
+
 class ActiveCase {
   currently_infected_patients: number;
   inMidCondition: number;
