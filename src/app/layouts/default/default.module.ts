@@ -25,7 +25,8 @@ import {MatTabsModule} from '@angular/material/tabs';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatSortModule} from '@angular/material/sort';
 import {MatSliderModule} from '@angular/material/slider';
-import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 import { DefaultComponent } from './default.component';
 import { DashboardComponent } from '../../modules/dashboard/dashboard.component';
@@ -41,6 +42,8 @@ import { AgmCoreModule } from '@agm/core';
 import { GraphComponent } from 'src/app/visuals/graph/graph.component';
 import { SHARED_VISUALS, LinkVisualComponent, NodeVisualComponent } from 'src/app/visuals/shared';
 import { D3_DIRECTIVES, D3Service, ZoomableDirective, DraggableDirective } from 'src/app/d3';
+import { PatientDialogComponent } from 'src/app/modules/patient-dialog/patient-dialog.component';
+import { PatientComponent } from 'src/app/modules/patient/patient.component';
 
 
 @NgModule({
@@ -57,6 +60,8 @@ import { D3_DIRECTIVES, D3Service, ZoomableDirective, DraggableDirective } from 
     LinkVisualComponent,
     ZoomableDirective,
     DraggableDirective,
+    PatientDialogComponent,
+    PatientComponent,
     ...SHARED_VISUALS,
     ...D3_DIRECTIVES
   ],
@@ -94,6 +99,7 @@ import { D3_DIRECTIVES, D3Service, ZoomableDirective, DraggableDirective } from 
     MatCheckboxModule,
     MatRadioModule,
     MatGridListModule,
+    MatExpansionModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyCGvQ8knHyLuE4gbs5d2w5mO2tW-8tgVYs'
     })
@@ -102,7 +108,8 @@ import { D3_DIRECTIVES, D3Service, ZoomableDirective, DraggableDirective } from 
     D3Service
   ],
   entryComponents: [
-    PatientMapItemComponent
+    PatientMapItemComponent,
+    PatientDialogComponent,
   ]
 })
 export class DefaultModule { }

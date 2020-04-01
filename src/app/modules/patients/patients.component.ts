@@ -4,6 +4,8 @@ import { SelectionModel } from '@angular/cdk/collections';
 import { PatientServiceService } from 'src/app/services/patient-service.service';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
+import { FirebaseService } from 'src/app/services/firebase.service';
+import { Router } from '@angular/router';
 
 export interface PeriodicElement {
   uref: string;
@@ -81,7 +83,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
 export class PatientsComponent implements OnInit {
   displayedColumns: string[] =
   ['select', 'firstname', 'lastname', 'email', 'phone', 'whatsapp', 'address',
-  'country', 'city', 'status', 'group', 'created'];
+ 'city', 'status', 'actions'];
    dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
    selection = new SelectionModel<PeriodicElement>(true, []);
    searchValue: any;
@@ -93,14 +95,17 @@ export class PatientsComponent implements OnInit {
   @ViewChild(MatSort, {static: true}) sort: MatSort;
 
    constructor(
-     private patientService: PatientServiceService
+     private patientService: PatientServiceService,
+     private firebaseService: FirebaseService,
+     private router: Router
    ) { }
 
    ngOnInit() {
      this.loading = true;
      this.patients = [];
-     this.patientService.getPatients().subscribe(
+     this.firebaseService.getPatients().subscribe(
        res => {
+         /*
          res.forEach(element => {
             const item = {
               uref: element.id,
@@ -116,8 +121,9 @@ export class PatientsComponent implements OnInit {
             };
             this.patients.push(item);
          });
-         this.dataSource.data = this.patients;
-         this.patientstable.renderRows();
+         */
+         // this.dataSource.data = this.patients;
+         // this.patientstable.renderRows();
          this.loading = false;
        },
        err => {
@@ -126,16 +132,22 @@ export class PatientsComponent implements OnInit {
      );
    }
 
-  openConfirmDeleteUserDialog() {}
+  openConfirmDeleteUserDialog(element) {}
+
+  openDialog(element) {
+  }
 
   openAddUserDialog() {
 
   }
 
-  openDialog(action, element) {
-
+  openPatientPage(element) {
+    this.router.navigate(['/patient']);
   }
 
+  openUpdatePatient(element) {
+
+  }
 
    /** Whether the number of selected elements matches the total number of rows. */
    isAllSelected() {

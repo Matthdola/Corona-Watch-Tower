@@ -13,7 +13,9 @@ import { StudentCreateComponent } from './modules/student-create/student-create.
 import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
-
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,6 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     HomeComponent,
     StudentListComponent,
     StudentCreateComponent,
-
   ],
   imports: [
     BrowserModule,
@@ -32,7 +33,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     MatFormFieldModule,
     MatInputModule,
     DefaultModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFirestoreModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

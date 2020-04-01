@@ -8,6 +8,7 @@ import { RepartitionGeoComponent } from './modules/repartition-geo/repartition-g
 import { HomeComponent } from './modules/home/home.component';
 import { StudentListComponent } from './modules/student-list/student-list.component';
 import { StudentCreateComponent } from './modules/student-create/student-create.component';
+import { PatientComponent } from './modules/patient/patient.component';
 
 
 const routes: Routes = [
@@ -30,6 +31,10 @@ const routes: Routes = [
       {
         path: 'repartitiongeo',
         component: RepartitionGeoComponent
+      },
+      {
+        path: 'patient',
+        component: PatientComponent
       }
     ]
   },
@@ -44,7 +49,8 @@ const routes: Routes = [
   {
     path: 'enroll',
     component: StudentCreateComponent
-  }
+  },
+
 ];
 
 @NgModule({

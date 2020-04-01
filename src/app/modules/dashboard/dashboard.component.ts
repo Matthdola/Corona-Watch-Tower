@@ -10,7 +10,6 @@ import { Covid19Service } from 'src/app/services/covid19.service';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-
   bigChart = [];
   pieChart = [];
   cardChart = [];
@@ -18,6 +17,11 @@ export class DashboardComponent implements OnInit {
   links: Link[] = [];
   countries = [];
   loading: boolean;
+  totalCases: any;
+  recovered: any;
+  deaths: any;
+  activeCases: any;
+
   constructor(
     private dashboardService: DashboardService,
     private covid19: Covid19Service
@@ -60,6 +64,24 @@ export class DashboardComponent implements OnInit {
     this.bigChart = this.dashboardService.bigChart();
     this.pieChart = this.dashboardService.pieChart();
     this.cardChart = this.dashboardService.card();
+    this.covid19.getAllReports().subscribe(res => {
+      const reports = res['reports'];
+      if (reports !== null && reports !== undefined) {
+        const obj = reports[0];
+        if (reports !== null && reports !== undefined) {
+          this.totalCases = obj['cases'];
+          this.deaths = obj['deaths'];
+          this.recovered = obj['recovered'];
+          const cas_actives = obj['active_cases'];
+          if (cas_actives !== null && cas_actives !== undefined) {
+            this.activeCases = cas_actives[0];
+          }
+        }
+      }
+    },
+    err => {
+
+    });
   }
 
 }

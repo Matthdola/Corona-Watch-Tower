@@ -9,15 +9,11 @@
           </div>
         </span>
             <span fxFlex="40" class="text-right">
-
-          <button mat-button (click)="openAddUserDialog()" mat-flat-button color="primary" class="btn-border mr-2" >Ajouter</button>
-          <button mat-button (click)="openAddUserDialog()" mat-flat-button  class="btn-border btn-default mr-2" >Voir detail</button>
-          <button mat-button (click)="openConfirmDeleteUserDialog()" mat-flat-button class="btn btn-warning btn-border mr-2" >Modifier</button>
-          <button mat-button (click)="openConfirmDeleteUserDialog()" mat-flat-button class="btn btn-danger btn-border mr-2" >Supprimer</button>
-        </span>
+              <button mat-button (click)="openAddUserDialog()" mat-flat-button color="primary" class="btn-border mr-2" >Ajouter</button>
+            </span>
         </div>
     </div>
-    <div class="ml-2 mr-3" fxFlex="90">
+    <div class="ml-2 mr-3 container" fxFlex="90">
         <div *ngIf="loading">
             <mat-progress-bar mode="indeterminate"></mat-progress-bar>
         </div>
@@ -118,20 +114,6 @@
                 </td>
             </ng-container>
 
-            <!-- Country  Column -->
-            <ng-container matColumnDef="country">
-                <th *matHeaderCellDef>
-                    <span class="ml-2">
-                  Pays
-                </span>
-                </th>
-                <td *matCellDef="let element">
-                    <span class="ml-2">
-                  {{element.country}}
-                </span>
-                </td>
-            </ng-container>
-
             <!-- City Column -->
             <ng-container matColumnDef="city">
                 <th *matHeaderCellDef>
@@ -159,32 +141,20 @@
                 </span>
                 </td>
             </ng-container>
-
-            <!-- Group Column -->
-            <ng-container matColumnDef="group">
-                <th *matHeaderCellDef>
-                    <span class="ml-2">
-                  Groupe
-                </span>
-                </th>
-                <td *matCellDef="let element">
-                    <span class="ml-2">
-                  {{element.group}}
-                </span>
-                </td>
-            </ng-container>
-
             <!-- Created date Column -->
-            <ng-container matColumnDef="created">
+            <ng-container matColumnDef="actions">
                 <th *matHeaderCellDef>
                     <span class="ml-2">
-                    Date d'inscription
-                  </span>
+                  Actions
+                </span>
                 </th>
                 <td *matCellDef="let element">
                     <span class="ml-2">
-                    {{element.created}}
-                  </span>
+                  <button mat-button (click)="openPatientPage(element)"
+                    class="btn-border mr-2" color="primary" >Voir detail</button>
+                  <button mat-button (click)="openConfirmDeleteUserDialog(element)"
+                   class="btn btn-danger btn-border mr-2" >Supprimer</button>
+                </span>
                 </td>
             </ng-container>
 

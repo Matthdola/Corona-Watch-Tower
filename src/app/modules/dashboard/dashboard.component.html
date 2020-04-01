@@ -1,23 +1,68 @@
-<div>
-    <app-area [data]="bigChart"></app-area>
+<div class="container">
+    <div>
+        <img src="/assets/images/covid19-gestes-simples.jpg" height="300px" class="img-fluid" width="100%">
+        <div class="jumbotron" style="background-color: #a9a9a9; height: 100%;">
+            <h1>Rapport des cas générales</h1>
+            <!-- <p class="lead">
+                Creating Exciting Angular Projects with Edureka
+            </p> -->
+            <div class="card-group">
+                <div class="card">
+                    <img class="card-img-top" height="200" src="/assets/images/Covid19_2.png" />
+                    <div class="card-body">
+                        <h5 class="card-title">Total Active</h5>
+                        <p class="card-text badge badge-primary">{{totalCases}}</p>
+                        <p class="card-text"><small class="text-muted">Depuis 1 jour</small></p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img class="card-img-top" height="200" src="/assets/images/Covid19_2.png" />
+                    <div class="card-body">
+                        <h5 class="card-title">Guéris</h5>
+                        <p class="card-text badge badge-primary">{{recovered}}</p>
+                        <p class="card-text"><small class="text-muted">Depuis 1 jour</small></p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img class="card-img-top" height="200" src="/assets/images/Covid19_2.png" />
+                    <div class="card-body">
+                        <h5 class="card-title">Décédés</h5>
+                        <p class="card-text badge badge-primary">{{deaths}}</p>
+                        <p class="card-text"><small class="text-muted">Depuis 1 jour</small></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <mat-divider></mat-divider>
+    <div class="jumbotron" style="background-color: #a9a9a9; height: 100%;">
+        <h3>Cas actives</h3>
+        <div class="card-group">
+            <div class="card">
+                <img class="card-img-top" height="150" src="/assets/images/Covid19_2.png" />
+                <div class="card-body">
+                    <h5 class="card-title">Patient infecté</h5>
+                    <p class="card-header badge badge-primary">{{ activeCases.currently_infected_patients }}</p>
+                    <p class="card-text"><small class="text-muted">Depuis 1 jour</small></p>
+                </div>
+            </div>
+            <div class="card">
+                <img class="card-img-top" height="150" src="/assets/images/Covid19_2.png" />
+                <div class="card-body">
+                    <h5 class="card-title">Etat moyen</h5>
+                    <p class="card-header badge badge-primary">{{ activeCases.inMidCondition }}</p>
+                    <p class="card-text"><small class="text-muted">Depuis 1 jour</small></p>
+                </div>
+            </div>
+            <div class="card">
+                <img class="card-img-top" height="150" src="/assets/images/Covid19_2.png" />
+                <div class="card-body">
+                    <h5 class="card-title">Etat critique</h5>
+                    <p class="card-header badge badge-primary">{{ activeCases.criticalStates }}</p>
+                    <p class="card-text"><small class="text-muted">Depuis 1 jour</small></p>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-<br>
-<mat-divider></mat-divider>
-<br>
-<div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px" class="stats-cards">
-    <mat-card>
-        <app-widget-card [data]="cardChart" label="Total des cas" total="12k" percentage="50"></app-widget-card>
-    </mat-card>
-    <mat-card>
-        <app-widget-card [data]="cardChart" label="Active" total="6k" percentage="20"></app-widget-card>
-    </mat-card>
-    <mat-card>
-        <app-widget-card [data]="cardChart" label="Guéris" total="10k" percentage="40"></app-widget-card>
-    </mat-card>
-    <mat-card>
-        <app-widget-card [data]="cardChart" label="Décès" total="6k" percentage="20"></app-widget-card>
-    </mat-card>
-</div>
-<br>
-<mat-divider></mat-divider>
-<br>

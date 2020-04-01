@@ -43,6 +43,11 @@ export class Covid19Service {
     return this.http.get<any>(BASE_URL + 'ReportsByCountry/');
   }
 
+  // https://covid19-server.chrismichael.now.sh/api/v1/AllReports
+  getAllReports(): Observable<any> {
+    return this.http.get<any>(BASE_URL + 'AllReports');
+  }
+
   getDeaths(): Observable<any> {
     return this.http.get<any>(BASE_URL + 'Deaths');
   }

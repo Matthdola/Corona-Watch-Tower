@@ -1,0 +1,226 @@
+<ul class="nav mb-2 justify-content-end">
+    <li class="nav-item">
+        <a class="nav-link" href="#" class="btn btn-primary mr-2" [disabled]="notChanged" mat-button (click)="applyChanges()">Modifier</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#" class="btn btn-danger" mat-button (click)="deletePatient()">Supprimer</a>
+    </li>
+</ul>
+<div fxLayout="row">
+    <div fxFlex="15" class="mr-2">
+        <div class="card-group">
+            <div class="card">
+                <img class="card-img-top" height="200" src="/assets/images/Covid19_2.png" />
+                <div class="card-body">
+                    <h5 class="card-title">{{patient.firstname}}</h5>
+                    <p class="card-text">{{patient.quartier}}</p>
+                    <p class="card-text"><small class="text-muted">{{patient.age}}</small></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div fxFlex="85" class=" ml-2">
+        <div>
+            <mat-accordion>
+                <mat-expansion-panel>
+                    <mat-expansion-panel-header class="info-cat">
+                        <mat-panel-title>
+                            <h5>Informations générales</h5>
+                        </mat-panel-title>
+                        <!-- <mat-panel-description>
+                            Type your name and age
+                        </mat-panel-description> -->
+                    </mat-expansion-panel-header>
+                    <div fxFlexLayout="row">
+                        <div fxFlex fxFlexOffset="20px">
+                            <form novalidate class="create-form" [formGroup]="patientDialogForm" #fform="ngForm" (ngSubmit)="onSubmit()">
+                                <p class="form-group">
+                                    <mat-form-field class="input-style hall-width">
+                                        <input matInput formControlName="lastname" class="form-control" value="{{lastname}}" placeholder="Nom" type="text" required>
+                                        <mat-error *ngIf="patientDialogForm.get('lastname').hasError('required') && patientDialogForm.get('lastname').touched">
+                                            Le nom du patient est obligatoire
+                                        </mat-error>
+                                    </mat-form-field>
+                                </p>
+                                <p class="form-group">
+                                    <mat-form-field class="input-style hall-width">
+                                        <input matInput formControlName="firstname" class="form-control" value="{{firstname}}" placeholder="Prenom" type="text" required>
+                                        <mat-error *ngIf="patientDialogForm.get('firstname').hasError('required') && patientDialogForm.get('firstname').touched">
+                                            Le prenom du patient est obligatoire
+                                        </mat-error>
+                                    </mat-form-field>
+                                </p>
+                                <p class="form-group">
+                                    <mat-form-field class="input-style hall-width">
+                                        <input matInput formControlName="email" class="form-control" value="{{email}}" placeholder="Email" type="email" required>
+                                        <mat-error *ngIf="patientDialogForm.get('email').hasError('required') && patientDialogForm.get('email').touched">
+                                            L'email du patient est obligatoire
+                                        </mat-error>
+                                    </mat-form-field>
+                                </p>
+                                <p class="form-group">
+                                    <mat-form-field class="input-style hall-width">
+                                        <input matInput formControlName="quartier" class="form-control" value="{{quartier}}" placeholder="Quartier" type="text" required>
+                                        <mat-error *ngIf="patientDialogForm.get('quartier').hasError('required') && patientDialogForm.get('quartier').touched">
+                                            Le quartier du patient est obligatoire
+                                        </mat-error>
+                                    </mat-form-field>
+                                </p>
+                                <p class="form-group">
+                                    <mat-form-field class="input-style hall-width">
+                                        <input matInput formControlName="profession" class="form-control" value="{{profession}}" placeholder="Profession" type="text" required>
+                                        <mat-error *ngIf="patientDialogForm.get('profession').hasError('required') && patientDialogForm.get('profession').touched">
+                                            La profession du patient est obligatoire
+                                        </mat-error>
+                                    </mat-form-field>
+                                </p>
+                                <span class="flex-spacer"></span>
+                                <!-- <button mat-button mat-dialog-close class="btn btn-default">Cancel</button> -->
+                                <!-- <button mat-button type="submit" class="background-primary text-floral-white" [disabled]="patientDialogForm.invalid">{{ mode }}</button> -->
+                            </form>
+                        </div>
+                    </div>
+                </mat-expansion-panel>
+
+                <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                    <mat-expansion-panel-header class="info-cat">
+                        <mat-panel-title>
+                            <h5>Symptoms</h5>
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <div fxFlexLayout="row">
+                        <div fxFlex fxFlexOffset="20px">
+                            <form novalidate class="create-form" [formGroup]="symptomsDialogForm" #fform="ngForm" (ngSubmit)="onSubmit()">
+                                <p class="form-group">
+
+                                    <mat-form-field class="input-style hall-width">
+                                        <input matInput formControlName="temperature" class="form-control" value="{{temperature}}" placeholder="Temperature" type="number" required>
+                                        <mat-error *ngIf="symptomsDialogForm.get('temperature').hasError('required')
+                                      && symptomsDialogForm.get('temperature').touched">
+                                            La temperature patient est obligatoire
+                                        </mat-error>
+                                    </mat-form-field>
+                                </p>
+                                <p class="form-group">
+                                    <label id="example-radio-group-label">Vous toussez</label>
+                                    <mat-radio-group matInput formControlName="toux" class="form-control" aria-label="">
+                                        <mat-radio-button value="true" class="mr-2">Oui</mat-radio-button>
+                                        <mat-radio-button value="false">Non</mat-radio-button>
+                                    </mat-radio-group>
+                                </p>
+                                <p class="form-group">
+                                    <label id="example-radio-group-label">Avez-vous la grippe?</label>
+                                    <mat-radio-group matInput formControlName="grippe" class="form-control" aria-label="">
+                                        <mat-radio-button value="true" class="mr-2">Oui</mat-radio-button>
+                                        <mat-radio-button value="false">Non</mat-radio-button>
+                                    </mat-radio-group>
+                                </p>
+                                <p class="form-group">
+                                    <label id="example-radio-group-label">Avez-vous des difficultés respiratoires?</label>
+                                    <mat-radio-group matInput formControlName="diff_respiratoire" class="form-control" aria-label="">
+                                        <mat-radio-button value="true" class="mr-2">Oui</mat-radio-button>
+                                        <mat-radio-button value="false">Non</mat-radio-button>
+                                    </mat-radio-group>
+                                </p>
+                                <p class="form-group">
+                                    <label id="example-radio-group-label">Avez-vous voyager</label>
+                                    <mat-radio-group matInput formControlName="etranger" class="form-control" aria-label="">
+                                        <mat-radio-button value="true" class="mr-2">Oui</mat-radio-button>
+                                        <mat-radio-button value="false">Non</mat-radio-button>
+                                    </mat-radio-group>
+                                </p>
+                                <span class="flex-spacer"></span>
+                                <!-- <button mat-button mat-dialog-close class="btn btn-default">Cancel</button> -->
+                                <!-- <button mat-button type="submit" class="background-primary text-floral-white" [disabled]="patientDialogForm.invalid">{{ mode }}</button> -->
+                            </form>
+                        </div>
+                    </div>
+                </mat-expansion-panel>
+
+                <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                    <mat-expansion-panel-header class="info-cat">
+                        <mat-panel-title>
+                            <h5>Récapitulatif de controles</h5>
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <div>
+                        <table mat-table #recaptable [dataSource]="dataSource" class="table table-striped table-bordered full-width">
+                            <!-- Checkbox Column -->
+                            <ng-container matColumnDef="select">
+                                <th *matHeaderCellDef>
+                                    <mat-checkbox color="primary" (change)="$event ? masterToggle() : null" [checked]="selection.hasValue() && isAllSelected()" [indeterminate]="selection.hasValue() && !isAllSelected()" [aria-label]="checkboxLabel()">
+                                    </mat-checkbox>
+                                </th>
+                                <td *matCellDef="let row">
+                                    <mat-checkbox color="primary" (click)="$event.stopPropagation()" (change)="$event ? selection.toggle(row) : null" [checked]="selection.isSelected(row)" [aria-label]="checkboxLabel(row)">
+                                    </mat-checkbox>
+                                </td>
+                            </ng-container>
+
+
+                            <!-- Name Column -->
+                            <ng-container matColumnDef="name">
+                                <th *matHeaderCellDef>
+                                    <span class="ml-2">
+                                    Nom
+                                  </span>
+                                </th>
+                                <td *matCellDef="let element">
+                                    <span class="ml-2">
+                                {{element.firstname}} {{element.lastname}}
+                              </span>
+                                </td>
+                            </ng-container>
+
+                            <!-- Email Column -->
+                            <ng-container matColumnDef="date">
+                                <th *matHeaderCellDef>
+                                    <span class="ml-2">
+                                Date
+                              </span>
+                                </th>
+                                <td *matCellDef="let element">
+                                    <span class="ml-2">
+                                      {{element.date | date}}
+                                    </span>
+                                </td>
+                            </ng-container>
+
+                            <!-- Created date Column -->
+                            <ng-container matColumnDef="photo">
+                                <th *matHeaderCellDef>
+                                    <span class="ml-2">
+                                    Photo
+                                  </span>
+                                </th>
+                                <td *matCellDef="let element">
+                                    <span class="ml-2">
+                                {{element.photo}}
+                              </span>
+                                </td>
+                            </ng-container>
+
+                            <!-- Owned Projects Column -->
+                            <ng-container matColumnDef="present">
+                                <th *matHeaderCellDef>
+                                    <span class="ml-2">
+                                    Present
+                                  </span>
+                                </th>
+                                <td *matCellDef="let element">
+                                    <span class="ml-2">
+                                    {{element.present}}
+                              </span>
+                                </td>
+                            </ng-container>
+
+                            <tr class="mt-0 mb-0" mat-header-row *matHeaderRowDef="displayedColumns;"></tr>
+                            <tr mat-row *matRowDef="let row; columns: displayedColumns;">
+                            </tr>
+                        </table>
+                    </div>
+                </mat-expansion-panel>
+            </mat-accordion>
+        </div>
+    </div>
+</div>
