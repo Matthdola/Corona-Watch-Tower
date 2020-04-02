@@ -106,8 +106,10 @@ export class PatientsComponent implements OnInit {
    ngOnInit() {
      this.loading = true;
      this.patients = [];
+     console.log('Initialize list of patients');
      this.firebaseService.getPatients().subscribe(
        res => {
+         console.log(res);
          /*
          res.forEach(element => {
             const item = {
@@ -130,6 +132,7 @@ export class PatientsComponent implements OnInit {
          this.loading = false;
        },
        err => {
+         console.log(err);
          this.loading = false;
        }
      );

@@ -1,28 +1,41 @@
-<div id="loginContainer">
-    <mat-toolbar id="loginHeader">
-        <span id="loginTitle">User Log in</span>
-    </mat-toolbar>
-    <form id="loginForm" novalidate #loginForm="ngForm" (ngSubmit)="onSubmit()">
-        <mat-dialog-content>
-            <mat-form-field class="full-width">
-                <input matInput fxflex placeholder="Email or Username" type="text" [(ngModel)]="user.name" name="name" #name="ngModel" required>
-                <mat-error *ngIf="name.errors?.required">Username is required</mat-error>
-            </mat-form-field>
+<div class="displayTable">
+    <div class="displayTableCell">
 
-            <mat-form-field class="full-width">
-                <input matInput fxflex placeholder="Password" type="password" [(ngModel)]="user.password" name="password" #password="ngModel" required>
-                <mat-error *ngIf="password.errors?.required">Password is required</mat-error>
-            </mat-form-field>
-            <mat-checkbox color="primary" class="full-width" [(ngModel)]="user.remember" name="remember">Remember me</mat-checkbox>
-        </mat-dialog-content>
+        <div class="authBlock">
+            <h3>Connexion </h3>
+            <div class="formGroup">
+                <input type="text" class="formControl" placeholder="Username" #userName required>
+            </div>
 
-        <mat-dialog-actions>
-            <button mat-button id="submitBtn" type="submit" class="text-floral-white" [disabled]="loginForm.form.invalid">LOG IN</button>
-            <!--
-          <button mat-button mat-dialog-close>Cancel</button>
-          -->
-            <a (click)="openPasswordResetingPage($event)" class="text-links ml-3">I forgot my password</a>
-            <span class="flex-spacer"></span>
-        </mat-dialog-actions>
-    </form>
+            <div class="formGroup">
+                <input type="password" class="formControl" placeholder="Password" #userPassword required>
+            </div>
+
+            <!-- Calling SignIn Api from AuthService -->
+            <div class="formGroup">
+                <input type="button" class="btn btnPrimary" value="Log in" (click)="authService.signIn(userName.value, userPassword.value)">
+            </div>
+
+            <div class="formGroup">
+                <span class="or"><span class="orInner">Or</span></span>
+            </div>
+
+            <!-- Calling GoogleAuth Api from AuthService -->
+            <div class="formGroup">
+                <button type="button" class="btn googleBtn" (click)="authService.googleAuth()">
+          <i class="fab fa-google-plus-g"></i>
+          Log in with Google
+        </button>
+            </div>
+
+            <div class="forgotPassword">
+                <span routerLink="/forgot-password">Forgot Password?</span>
+            </div>
+        </div>
+
+        <div class="redirectToLogin">
+            <span>Don't have an account?<span class="redirect" routerLink="/register-user"> Sign Up</span></span>
+        </div>
+
+    </div>
 </div>

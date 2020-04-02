@@ -23,6 +23,9 @@ import { MatCardModule } from '@angular/material/card';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { SignUpComponent } from './components/sign-up/sign-up.component';
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
+import { VerifyEmailComponent } from './components/verify-email/verify-email.component';
 @NgModule({
   declarations: [
     HeaderComponent,
@@ -31,7 +34,10 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     AreaComponent,
     CardComponent,
     PieComponent,
-    LoginComponent
+    LoginComponent,
+    SignUpComponent,
+    ForgotPasswordComponent,
+    VerifyEmailComponent
   ],
   imports: [
     CommonModule,

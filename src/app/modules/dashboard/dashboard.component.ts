@@ -74,9 +74,9 @@ export class DashboardComponent implements OnInit {
       if (reports !== null && reports !== undefined) {
         const obj = reports[0];
         if (reports !== null && reports !== undefined) {
-          this.totalCases = obj['cases'];
-          this.deaths = obj['deaths'];
-          this.recovered = obj['recovered'];
+          this.totalCases = obj['cases'] ;
+          this.deaths = obj['deaths'] ;
+          this.recovered = obj['recovered'] ;
           const cas_actives = obj['active_cases'];
           if (cas_actives !== null && cas_actives !== undefined) {
             this.activeCases = cas_actives[0];

@@ -9,6 +9,12 @@ import { HomeComponent } from './modules/home/home.component';
 import { StudentListComponent } from './modules/student-list/student-list.component';
 import { StudentCreateComponent } from './modules/student-create/student-create.component';
 import { PatientComponent } from './modules/patient/patient.component';
+import { SignUpComponent } from './shared/components/sign-up/sign-up.component';
+import { LoginComponent } from './shared/components/login/login.component';
+import { ForgotPasswordComponent } from './shared/components/forgot-password/forgot-password.component';
+import { VerifyEmailComponent } from './shared/components/verify-email/verify-email.component';
+import { SecureInnerPagesGuard } from './shared/guard/secure-inner-pages.guard';
+import { AuthGuard } from './shared/guard/auth.guard';
 
 
 const routes: Routes = [
@@ -22,35 +28,45 @@ const routes: Routes = [
       },
       {
         path: 'posts',
-        component: PostsComponent
+        component: PostsComponent,
+        canActivate: [AuthGuard]
       },
       {
         path: 'patients',
-        component: PatientsComponent
+        component: PatientsComponent,
+        canActivate: [AuthGuard]
       },
       {
         path: 'repartitiongeo',
-        component: RepartitionGeoComponent
+        component: AuthGuard
       },
       {
         path: 'patient',
-        component: PatientComponent
+        component: PatientComponent,
+        canActivate: [AuthGuard]
       }
     ]
   },
   {
-    path: 'courses',
-    component: HomeComponent
+    path: 'register-user',
+    component: SignUpComponent,
+    canActivate: [SecureInnerPagesGuard]
   },
   {
-    path: 'students',
-    component: StudentListComponent
+    path: 'login',
+    component: LoginComponent,
+    canActivate: [SecureInnerPagesGuard]
   },
   {
-    path: 'enroll',
-    component: StudentCreateComponent
+    path: 'forgot-password',
+    component: ForgotPasswordComponent,
+    canActivate: [SecureInnerPagesGuard]
   },
-
+  {
+    path: 'verify-email-address',
+    component: VerifyEmailComponent,
+    canActivate: [SecureInnerPagesGuard]
+  },
 ];
 
 @NgModule({

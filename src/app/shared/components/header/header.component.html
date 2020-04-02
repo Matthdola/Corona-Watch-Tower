@@ -7,28 +7,38 @@
         <span> Corona Watch Tower </span>
         <span class="flex-spacer"></span>
         <span fxLayout="row">
+          <!--
             <span fxFlex>
               <button mat-icon-button>
                   <mat-icon>settings</mat-icon>
                 </button>
           </span>
-        <!-- <span fxFlex>
+        <span fxFlex>
               <button  [routerLink]="['/courses']" mat-icon-button>
                   <mat-icon>help_outline</mat-icon>
                 </button>
           </span> -->
-        <!-- <span fxFlex>
+        <span fxFlex>
+            <ng-template *ngIf="authService.isLoggedIn then logout; else login"></ng-template>
+            <ng-template #login>
+              <button mat-button (click)="goToLoginPage()" >
+                <mat-icon>sign_in</mat-icon>
+                Connexion
+              </button>
+            </ng-template>
+            <ng-template #logout>
               <button mat-button [matMenuTriggerFor]="menu">
                   <mat-icon>person_outline</mat-icon>
                 </button>
               <mat-menu #menu="matMenu">
-                  <button mat-menu-item>
+                  <button (click)="authService.signOut()" mat-menu-item>
                     <mat-icon>exit_to_app</mat-icon>
-                    Sign out
+                    Deconnexion
                   </button>
               </mat-menu>
-              <mat-icon>menu</mat-icon>
-          </span> -->
+            </ng-template>
+              <!-- <mat-icon>menu</mat-icon> -->
+          </span>
         </span>
     </mat-toolbar-row>
 </mat-toolbar>

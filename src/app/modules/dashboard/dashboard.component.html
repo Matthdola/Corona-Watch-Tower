@@ -1,6 +1,6 @@
 <div class="container">
     <div>
-        <img src="/assets/images/covid19-gestes-simples.jpg" height="300px" class="img-fluid" width="100%">
+        <img src="/assets/images/covid19_prevention.png" height="300px" class="img-fluid" width="100%">
         <div class="jumbotron" style="background-color: #a9a9a9; height: 100%;">
             <h1>Rapport des cas générales</h1>
             <!-- <p class="lead">
@@ -11,7 +11,7 @@
                     <img class="card-img-top" height="150" src="/assets/images/Covid19_2.png" />
                     <div class="card-body">
                         <h5 class="card-title">Total Active</h5>
-                        <p class="card-text badge badge-primary">{{totalCases}}</p>
+                        <p class="card-text badge badge-primary" style="font-size: 1.3rem;">{{totalCases | number:''}}</p>
                         <p class="card-text"><small class="text-muted">Depuis 1 jour</small></p>
                     </div>
                 </div>
@@ -19,7 +19,7 @@
                     <img class="card-img-top" height="150" src="/assets/images/Covid19_2.png" />
                     <div class="card-body">
                         <h5 class="card-title">Guéris</h5>
-                        <p class="card-text badge badge-primary">{{recovered}}</p>
+                        <p class="card-text badge badge-primary" style="font-size: 1.3rem;">{{recovered | number}}</p>
                         <p class="card-text"><small class="text-muted">Depuis 1 jour</small></p>
                     </div>
                 </div>
@@ -27,7 +27,7 @@
                     <img class="card-img-top" height="150" src="/assets/images/Covid19_2.png" />
                     <div class="card-body">
                         <h5 class="card-title">Décédés</h5>
-                        <p class="card-text badge badge-primary">{{deaths}}</p>
+                        <p class="card-text badge badge-primary" style="font-size: 1.3rem;">{{deaths | number}}</p>
                         <p class="card-text"><small class="text-muted">Depuis 1 jour</small></p>
                     </div>
                 </div>
@@ -43,7 +43,7 @@
                 <img class="card-img-top" height="150" src="/assets/images/Covid19_2.png" />
                 <div class="card-body">
                     <h5 class="card-title">Patient infecté</h5>
-                    <p class="card-header badge badge-primary">{{ activeCases.currently_infected_patients }}</p>
+                    <p class="card-header badge badge-primary" style="font-size: 1.3rem;">{{ activeCases.currently_infected_patients | number }}</p>
                     <p class="card-text"><small class="text-muted">Depuis 1 jour</small></p>
                 </div>
             </div>
@@ -51,7 +51,7 @@
                 <img class="card-img-top" height="150" src="/assets/images/Covid19_2.png" />
                 <div class="card-body">
                     <h5 class="card-title">Etat moyen</h5>
-                    <p class="card-header badge badge-primary">{{ activeCases.inMidCondition }}</p>
+                    <p class="card-header badge badge-primary" style="font-size: 1.3rem;">{{ activeCases.inMidCondition | number }}</p>
                     <p class="card-text"><small class="text-muted">Depuis 1 jour</small></p>
                 </div>
             </div>
@@ -59,7 +59,7 @@
                 <img class="card-img-top" height="150" src="/assets/images/Covid19_2.png" />
                 <div class="card-body">
                     <h5 class="card-title">Etat critique</h5>
-                    <p class="card-header badge badge-primary">{{ activeCases.criticalStates }}</p>
+                    <p class="card-header badge badge-primary" style="font-size: 1.3rem;">{{ activeCases.criticalStates | number }}</p>
                     <p class="card-text"><small class="text-muted">Depuis 1 jour</small></p>
                 </div>
             </div>

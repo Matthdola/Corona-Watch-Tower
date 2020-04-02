@@ -56,7 +56,7 @@ export class PatientComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private firebaseDatabase: FirebaseService
+    private firebaseService: FirebaseService
   ) { }
 
   ngOnInit(): void {
@@ -83,7 +83,7 @@ export class PatientComponent implements OnInit {
     const info = this.patientDialogForm.value;
     const symptoms = this.symptomsDialogForm.value;
     const value = Object.assign({}, {...info, ...symptoms});
-    this.firebaseDatabase.createPatient(value).then(res => {
+    this.firebaseService.createPatient(value).then(res => {
       alert('patient créer');
     });
   }
