@@ -6,6 +6,8 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { FirebaseService } from 'src/app/services/firebase.service';
 import { Router } from '@angular/router';
+import { MatDialogConfig, MatDialog } from '@angular/material/dialog';
+import { PatientDialogComponent } from '../patient-dialog/patient-dialog.component';
 
 export interface PeriodicElement {
   uref: string;
@@ -97,6 +99,7 @@ export class PatientsComponent implements OnInit {
    constructor(
      private patientService: PatientServiceService,
      private firebaseService: FirebaseService,
+     private dialog: MatDialog,
      private router: Router
    ) { }
 
@@ -138,7 +141,18 @@ export class PatientsComponent implements OnInit {
   }
 
   openAddUserDialog() {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.width = 'auto';
+    dialogConfig.height = 'auto';
+    dialogConfig.autoFocus = true;
+    dialogConfig.data = {
+    };
 
+    const dialogRef = this.dialog.open(PatientDialogComponent, dialogConfig);
+    dialogRef.afterClosed().subscribe(result => {
+      if (result.event === 'Add') {
+      }
+    });
   }
 
   openPatientPage(element) {

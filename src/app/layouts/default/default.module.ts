@@ -27,7 +27,7 @@ import {MatSortModule} from '@angular/material/sort';
 import {MatSliderModule} from '@angular/material/slider';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatExpansionModule } from '@angular/material/expansion';
-
+import { MatStepperModule } from '@angular/material/stepper';
 import { DefaultComponent } from './default.component';
 import { DashboardComponent } from '../../modules/dashboard/dashboard.component';
 import { RouterModule } from '@angular/router';
@@ -100,6 +100,7 @@ import { PatientComponent } from 'src/app/modules/patient/patient.component';
     MatRadioModule,
     MatGridListModule,
     MatExpansionModule,
+    MatStepperModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyCGvQ8knHyLuE4gbs5d2w5mO2tW-8tgVYs'
     })

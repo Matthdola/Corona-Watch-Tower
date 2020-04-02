@@ -18,6 +18,11 @@ export class PatientDialogComponent implements OnInit {
   password: string;
   profession: string;
   quartier: string;
+  temperature: number;
+  toux: boolean;
+  grippe: boolean;
+  diff_respiratoire: boolean;
+  etranger: boolean;
   @Output() invalidIconDropped = new EventEmitter<boolean>();
   @Input() user: any;
   @Input() mode = 'Create';
@@ -33,10 +38,10 @@ export class PatientDialogComponent implements OnInit {
     private dialogRef: MatDialogRef<PatientDialogComponent>
   ) {
     if (data !== undefined && data !== null) {
-      this.patient = data.patient;
-      this.mode = data.mode;
-      this.firstname = data.patient.firstname;
-      this.lastname = data.patient.lastname;
+      // this.mode = data.mode;
+      // this.patient = data.patient;
+      // this.firstname = data.patient.firstname;
+      // this.lastname = data.patient.lastname;
     }
 
     this.createForm();
@@ -60,6 +65,7 @@ export class PatientDialogComponent implements OnInit {
     let lastname = '';
     let profession = '';
     let quartier = '';
+
     if (this.patient !== undefined && this.patient !== null) {
       email = this.patient.email;
       password = this.patient.password;
@@ -75,6 +81,11 @@ export class PatientDialogComponent implements OnInit {
       lastname: [name, Validators.required],
       profession: [profession, Validators.required],
       quartier: [quartier, Validators.required],
+      temperature: [37, Validators.required],
+      toux: [false, Validators.required],
+      grippe: [false, Validators.required],
+      diff_respiratoire: [false, Validators.required],
+      etranger: [false, Validators.required]
     });
   }
 

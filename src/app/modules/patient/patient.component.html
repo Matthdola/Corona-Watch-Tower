@@ -21,16 +21,8 @@
     </div>
     <div fxFlex="85" class=" ml-2">
         <div>
-            <mat-accordion>
-                <mat-expansion-panel>
-                    <mat-expansion-panel-header class="info-cat">
-                        <mat-panel-title>
-                            <h5>Informations générales</h5>
-                        </mat-panel-title>
-                        <!-- <mat-panel-description>
-                            Type your name and age
-                        </mat-panel-description> -->
-                    </mat-expansion-panel-header>
+            <mat-horizontal-stepper>
+                <mat-step label="Informations générales">
                     <div fxFlexLayout="row">
                         <div fxFlex fxFlexOffset="20px">
                             <form novalidate class="create-form" [formGroup]="patientDialogForm" #fform="ngForm" (ngSubmit)="onSubmit()">
@@ -80,23 +72,16 @@
                             </form>
                         </div>
                     </div>
-                </mat-expansion-panel>
-
-                <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-                    <mat-expansion-panel-header class="info-cat">
-                        <mat-panel-title>
-                            <h5>Symptoms</h5>
-                        </mat-panel-title>
-                    </mat-expansion-panel-header>
+                </mat-step>
+                <mat-step label="Symptoms">
                     <div fxFlexLayout="row">
                         <div fxFlex fxFlexOffset="20px">
                             <form novalidate class="create-form" [formGroup]="symptomsDialogForm" #fform="ngForm" (ngSubmit)="onSubmit()">
                                 <p class="form-group">
-
                                     <mat-form-field class="input-style hall-width">
                                         <input matInput formControlName="temperature" class="form-control" value="{{temperature}}" placeholder="Temperature" type="number" required>
                                         <mat-error *ngIf="symptomsDialogForm.get('temperature').hasError('required')
-                                      && symptomsDialogForm.get('temperature').touched">
+                              && symptomsDialogForm.get('temperature').touched">
                                             La temperature patient est obligatoire
                                         </mat-error>
                                     </mat-form-field>
@@ -135,14 +120,8 @@
                             </form>
                         </div>
                     </div>
-                </mat-expansion-panel>
-
-                <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-                    <mat-expansion-panel-header class="info-cat">
-                        <mat-panel-title>
-                            <h5>Récapitulatif de controles</h5>
-                        </mat-panel-title>
-                    </mat-expansion-panel-header>
+                </mat-step>
+                <mat-step label="Récapitulatif de controles">
                     <div>
                         <table mat-table #recaptable [dataSource]="dataSource" class="table table-striped table-bordered full-width">
                             <!-- Checkbox Column -->
@@ -162,13 +141,13 @@
                             <ng-container matColumnDef="name">
                                 <th *matHeaderCellDef>
                                     <span class="ml-2">
-                                    Nom
-                                  </span>
+                            Nom
+                          </span>
                                 </th>
                                 <td *matCellDef="let element">
                                     <span class="ml-2">
-                                {{element.firstname}} {{element.lastname}}
-                              </span>
+                        {{element.firstname}} {{element.lastname}}
+                      </span>
                                 </td>
                             </ng-container>
 
@@ -176,13 +155,13 @@
                             <ng-container matColumnDef="date">
                                 <th *matHeaderCellDef>
                                     <span class="ml-2">
-                                Date
-                              </span>
+                        Date
+                      </span>
                                 </th>
                                 <td *matCellDef="let element">
                                     <span class="ml-2">
-                                      {{element.date | date}}
-                                    </span>
+                              {{element.date | date}}
+                            </span>
                                 </td>
                             </ng-container>
 
@@ -190,13 +169,13 @@
                             <ng-container matColumnDef="photo">
                                 <th *matHeaderCellDef>
                                     <span class="ml-2">
-                                    Photo
-                                  </span>
+                            Photo
+                          </span>
                                 </th>
                                 <td *matCellDef="let element">
                                     <span class="ml-2">
-                                {{element.photo}}
-                              </span>
+                        {{element.photo}}
+                      </span>
                                 </td>
                             </ng-container>
 
@@ -204,13 +183,13 @@
                             <ng-container matColumnDef="present">
                                 <th *matHeaderCellDef>
                                     <span class="ml-2">
-                                    Present
-                                  </span>
+                            Present
+                          </span>
                                 </th>
                                 <td *matCellDef="let element">
                                     <span class="ml-2">
-                                    {{element.present}}
-                              </span>
+                            {{element.present}}
+                      </span>
                                 </td>
                             </ng-container>
 
@@ -219,8 +198,8 @@
                             </tr>
                         </table>
                     </div>
-                </mat-expansion-panel>
-            </mat-accordion>
+                </mat-step>
+            </mat-horizontal-stepper>
         </div>
     </div>
 </div>

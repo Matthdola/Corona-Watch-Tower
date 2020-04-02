@@ -4,16 +4,16 @@
             <span fxFlex="60" class="text-left">
           <div class="form-group has-clear">
               <mat-form-field class="full-width">
-                <input matInput class="full-width" placeholder="Search for ..." type="text" value="{{searchValue}}">
+                <input matInput class="full-width" placeholder="Recherche ..." type="text" value="{{searchValue}}">
               </mat-form-field>
           </div>
         </span>
-            <span fxFlex="40" class="text-right">
+            <span fxFlex="40" class="text-right full-width">
               <button mat-button (click)="openAddUserDialog()" mat-flat-button color="primary" class="btn-border mr-2" >Ajouter</button>
             </span>
         </div>
     </div>
-    <div class="ml-2 mr-3 container" fxFlex="90">
+    <div class="mr-3 container" fxFlex="90">
         <div *ngIf="loading">
             <mat-progress-bar mode="indeterminate"></mat-progress-bar>
         </div>

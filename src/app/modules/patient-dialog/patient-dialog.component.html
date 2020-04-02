@@ -1,62 +1,128 @@
-<div fxFlexLayout="row">
-    <div fxFlex fxFlexOffset="20px">
-        <h3>{{ mode }} un Patient</h3>
+<div fxFlexLayout="column" class="mr-2">
+    <div fxFlex fxFlexOffset="10px">
+        <h3 class="mb-2">Ajouter un Patient</h3>
         <form novalidate class="create-form" [formGroup]="patientDialogForm" #fform="ngForm" (ngSubmit)="onSubmit()">
             <mat-dialog-content>
-                <p class="form-group">
-                    <mat-form-field class="input-style">
-                        <input matInput formControlName="lastname" class="form-control" value="{{lastname}}" placeholder="Nom" type="text" required>
-                        <mat-error *ngIf="patientDialogForm.get('lastname').hasError('required') && patientDialogForm.get('lastname').touched">
-                            Le nom du patient est obligatoire
-                        </mat-error>
-                    </mat-form-field>
-                </p>
-                <p class="form-group">
-                    <mat-form-field class="input-style">
-                        <input matInput formControlName="firstname" class="form-control" value="{{firstname}}" placeholder="Prenom" type="text" required>
-                        <mat-error *ngIf="patientDialogForm.get('firstname').hasError('required') && patientDialogForm.get('firstname').touched">
-                            Le prenom du patient est obligatoire
-                        </mat-error>
-                    </mat-form-field>
-                </p>
-                <p class="form-group">
-                    <mat-form-field class="input-style">
-                        <input matInput formControlName="email" class="form-control" value="{{email}}" placeholder="Email" type="email" required>
-                        <mat-error *ngIf="patientDialogForm.get('email').hasError('required') && patientDialogForm.get('email').touched">
-                            L'email du patient est obligatoire
-                        </mat-error>
-                    </mat-form-field>
-                </p>
-                <p class="form-group">
-                    <mat-form-field class="input-style">
-                        <input matInput formControlName="password" class="form-control" value="{{password}}" placeholder="Mot de passe" type="password" required>
-                        <mat-error *ngIf="patientDialogForm.get('password').hasError('required') && patientDialogForm.get('password').touched">
-                            Le mot de pass du patient est obligatoire
-                        </mat-error>
-                    </mat-form-field>
-                </p>
-                <p class="form-group">
-                    <mat-form-field class="input-style">
-                        <input matInput formControlName="quartier" class="form-control" value="{{quartier}" placeholder="Quartier" type="text" required>
-                        <mat-error *ngIf="patientDialogForm.get('quartier').hasError('required') && patientDialogForm.get('quartier').touched">
-                            Le quartier du patient est obligatoire
-                        </mat-error>
-                    </mat-form-field>
-                </p>
-                <p class="form-group">
-                    <mat-form-field class="input-style">
-                        <input matInput formControlName="profession" class="form-control" value="{{profession}}" placeholder="Profession" type="text" required>
-                        <mat-error *ngIf="patientDialogForm.get('profession').hasError('required') && patientDialogForm.get('profession').touched">
-                            La profession du patient est obligatoire
-                        </mat-error>
-                    </mat-form-field>
-                </p>
+                <mat-horizontal-stepper>
+                    <mat-step label="Informations générales">
+                        <div>
+                            <p class="form-group full-width">
+                                <mat-form-field class="input-style full-width">
+                                    <input matInput formControlName="lastname" class="form-control" value="{{lastname}}" placeholder="Nom" type="text" required>
+                                    <mat-error *ngIf="patientDialogForm.get('lastname').hasError('required') && patientDialogForm.get('lastname').touched">
+                                        Le nom du patient est obligatoire
+                                    </mat-error>
+                                </mat-form-field>
+                            </p>
+                            <p class="form-group">
+                                <mat-form-field class="input-style  full-width">
+                                    <input matInput formControlName="firstname" class="form-control" value="{{firstname}}" placeholder="Prenom" type="text" required>
+                                    <mat-error *ngIf="patientDialogForm.get('firstname').hasError('required') && patientDialogForm.get('firstname').touched">
+                                        Le prenom du patient est obligatoire
+                                    </mat-error>
+                                </mat-form-field>
+                            </p>
+                            <p class="form-group">
+                                <mat-form-field class="input-style full-width">
+                                    <input matInput formControlName="email" class="form-control" value="{{email}}" placeholder="Email" type="email" required>
+                                    <mat-error *ngIf="patientDialogForm.get('email').hasError('required') && patientDialogForm.get('email').touched">
+                                        L'email du patient est obligatoire
+                                    </mat-error>
+                                </mat-form-field>
+                            </p>
+                            <p class="form-group">
+                                <mat-form-field class="input-style full-width">
+                                    <input matInput formControlName="password" class="form-control" value="{{password}}" placeholder="Mot de passe" type="password" required>
+                                    <mat-error *ngIf="patientDialogForm.get('password').hasError('required') && patientDialogForm.get('password').touched">
+                                        Le mot de pass du patient est obligatoire
+                                    </mat-error>
+                                </mat-form-field>
+                            </p>
+                            <p class="form-group">
+                                <mat-form-field class="input-style full-width">
+                                    <input matInput formControlName="quartier" class="form-control" value="{{quartier}" placeholder="Quartier" type="text" required>
+                                    <mat-error *ngIf="patientDialogForm.get('quartier').hasError('required') && patientDialogForm.get('quartier').touched">
+                                        Le quartier du patient est obligatoire
+                                    </mat-error>
+                                </mat-form-field>
+                            </p>
+                            <p class="form-group">
+                                <mat-form-field class="input-style full-width">
+                                    <input matInput formControlName="profession" class="form-control" value="{{profession}}" placeholder="Profession" type="text" required>
+                                    <mat-error *ngIf="patientDialogForm.get('profession').hasError('required') && patientDialogForm.get('profession').touched">
+                                        La profession du patient est obligatoire
+                                    </mat-error>
+                                </mat-form-field>
+                            </p>
+                            <br><br>
+                            <mat-divider></mat-divider>
+                            <div class="justify-content-end">
+                                <span class="flex-spacer"></span>
+                                <button mat-button class="btn btn-dark" matStepperNext>Suivant</button>
+                            </div>
+                        </div>
+                    </mat-step>
+                    <mat-step class="mt-2" label="Symptoms">
+                        <div>
+                            <p class="form-group">
+                                <mat-form-field class="input-style hall-width">
+                                    <input matInput formControlName="temperature" class="form-control" value="{{temperature}}" placeholder="Temperature" type="number" required>
+                                    <mat-error *ngIf="patientDialogForm.get('temperature').hasError('required') && patientDialogForm.get('temperature').touched">
+                                        La temperature patient est obligatoire
+                                    </mat-error>
+                                </mat-form-field>
+                            </p>
+                            <p class="form-group">
+                                <label id="example-radio-group-label">Est-ce que vous toussez ?</label>
+                                <mat-radio-group matInput formControlName="toux" class="form-control" aria-label="">
+                                    <mat-radio-button value="1" class="mr-2">Oui</mat-radio-button>
+                                    <mat-radio-button value="0">Non</mat-radio-button>
+                                </mat-radio-group>
+                            </p>
+                            <p class="form-group">
+                                <label id="example-radio-group-label">Avez-vous la grippe ?</label>
+                                <mat-radio-group matInput formControlName="grippe" class="form-control" aria-label="">
+                                    <mat-radio-button value="1" class="mr-2">Oui</mat-radio-button>
+                                    <mat-radio-button value="0">Non</mat-radio-button>
+                                </mat-radio-group>
+                            </p>
+                            <p class="form-group">
+                                <label id="example-radio-group-label">Avez-vous des difficultés respiratoires ?</label>
+                                <mat-radio-group matInput formControlName="diff_respiratoire" class="form-control" aria-label="">
+                                    <mat-radio-button value="1" class="mr-2">Oui</mat-radio-button>
+                                    <mat-radio-button value="0">Non</mat-radio-button>
+                                </mat-radio-group>
+                            </p>
+                            <p class="form-group">
+                                <label id="example-radio-group-label">Avez-vous voyager ?</label>
+                                <mat-radio-group matInput formControlName="etranger" class="form-control" aria-label="">
+                                    <mat-radio-button value="1" class="mr-2">Oui</mat-radio-button>
+                                    <mat-radio-button value="0">Non</mat-radio-button>
+                                </mat-radio-group>
+                            </p>
+                            <br><br>
+                            <mat-divider></mat-divider>
+                            <div class="justify-content-end">
+                                <span class="flex-spacer"></span>
+                                <button mat-button class="btn btn-dark mr-2" matStepperPrevious>Précedent</button>
+                                <button mat-button class="btn btn-dark" matStepperNext>Suivant</button>
+                            </div>
+                        </div>
+                    </mat-step>
+                    <mat-step class="mt-2" label="Validation">
+                        <div>
+                            <br><br>
+                            <mat-divider></mat-divider>
+                            <div class="justify-content-end mt-2">
+                                <span class="flex-spacer"></span>
+                                <button mat-button mat-dialog-close class="btn btn-dark mr-2">Annuler</button>
+                                <button mat-button class="btn btn-dark mr-2" matStepperPrevious>Précedent</button>
+                                <button mat-button type="submit" class="btn btn-primary" [disabled]="patientDialogForm.invalid">Valider</button>
+                            </div>
+                        </div>
+                    </mat-step>
+                </mat-horizontal-stepper>
             </mat-dialog-content>
-            <mat-dialog-actions>
-                <span class="flex-spacer"></span>
-                <button mat-button mat-dialog-close class="btn btn-default">Cancel</button>
-                <button mat-button type="submit" class="background-primary text-floral-white" [disabled]="patientDialogForm.invalid">{{ mode }}</button>
-            </mat-dialog-actions>
         </form>
     </div>
 </div>

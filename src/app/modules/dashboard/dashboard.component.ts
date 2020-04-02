@@ -64,6 +64,11 @@ export class DashboardComponent implements OnInit {
     this.bigChart = this.dashboardService.bigChart();
     this.pieChart = this.dashboardService.pieChart();
     this.cardChart = this.dashboardService.card();
+    this.activeCases = {
+      criticalStates: 0,
+      inMidCondition: 0,
+      currently_infected_patients: 0
+    };
     this.covid19.getAllReports().subscribe(res => {
       const reports = res['reports'];
       if (reports !== null && reports !== undefined) {
