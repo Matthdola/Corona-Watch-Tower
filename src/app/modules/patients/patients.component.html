@@ -1,19 +1,19 @@
-<div class="container" fxLayout="column" fxLayoutGap="2px">
+<div fxLayout="column" fxLayoutGap="2px">
     <div class="ml-2" fxFlex="10">
-        <div fxLayout="row" class="full-width mt-2">
-            <span fxFlex="60" class="text-left">
-          <div class="form-group has-clear">
-              <mat-form-field class="full-width">
-                <input matInput class="full-width" placeholder="Recherche ..." type="text" value="{{searchValue}}">
-              </mat-form-field>
-          </div>
-        </span>
-            <span fxFlex="40" class="text-right full-width">
-              <button mat-button (click)="openAddUserDialog()" mat-flat-button color="primary" class="btn-border mr-2" >Ajouter</button>
-            </span>
+        <div fxLayout="row" class="mt-2">
+            <span fxFlex="70" class="text-left">
+            <div class="form-group has-clear">
+                <mat-form-field class="full-width">
+                  <input matInput class="full-width" placeholder="Recherche ..." type="text" value="{{searchValue}}">
+                </mat-form-field>
+            </div>
+          </span>
+            <span fxFlex="30" class="text-right full-width">
+            <button mat-button class="text-right" (click)="openAddUserDialog()" mat-flat-button color="primary" class="btn-border" >Ajouter</button>
+          </span>
         </div>
     </div>
-    <div class="mr-3 container" fxFlex="90">
+    <div fxFlex="90">
         <div *ngIf="loading">
             <mat-progress-bar mode="indeterminate"></mat-progress-bar>
         </div>
@@ -33,12 +33,12 @@
             <!-- Firstname Column -->
             <ng-container matColumnDef="firstname">
                 <th *matHeaderCellDef>
-                    <span class="ml-2">
+                    <span class="ml-1">
                 Prenom
               </span>
                 </th>
                 <td *matCellDef="let element">
-                    <span class="ml-2">
+                    <span>
                 {{element.firstname}}
               </span>
                 </td>
@@ -47,12 +47,12 @@
             <!-- Firstname Column -->
             <ng-container matColumnDef="lastname">
                 <th *matHeaderCellDef>
-                    <span class="ml-2">
+                    <span class="ml-1">
                     Nom
                   </span>
                 </th>
                 <td *matCellDef="let element">
-                    <span class="ml-2">
+                    <span>
               {{element.lastname}}
             </span>
                 </td>
@@ -61,12 +61,12 @@
             <!-- Email Column -->
             <ng-container matColumnDef="email">
                 <th *matHeaderCellDef>
-                    <span class="ml-2">
+                    <span class="ml-1">
                 Email
               </span>
                 </th>
                 <td *matCellDef="let element">
-                    <span class="ml-2">
+                    <span>
                 {{element.email}}
               </span>
                 </td>
@@ -75,12 +75,12 @@
             <!-- Phone Column -->
             <ng-container matColumnDef="phone">
                 <th *matHeaderCellDef>
-                    <span class="ml-2">
+                    <span class="ml-1">
               Telephone
             </span>
                 </th>
                 <td *matCellDef="let element">
-                    <span class="ml-2">
+                    <span>
               {{element.phone}}
             </span>
                 </td>
@@ -89,12 +89,12 @@
             <!-- Whatsapp number Column -->
             <ng-container matColumnDef="whatsapp">
                 <th *matHeaderCellDef>
-                    <span class="ml-2">
+                    <span class="ml-1">
                   WhatsApp
                 </span>
                 </th>
                 <td *matCellDef="let element">
-                    <span class="ml-2">
+                    <span>
                   {{element.whatsapp}}
                 </span>
                 </td>
@@ -103,12 +103,12 @@
             <!-- Address  Column -->
             <ng-container matColumnDef="address">
                 <th *matHeaderCellDef>
-                    <span class="ml-2">
+                    <span class="ml-1">
                   Adresse
                 </span>
                 </th>
                 <td *matCellDef="let element">
-                    <span class="ml-2">
+                    <span>
                   {{element.address}}
                 </span>
                 </td>
@@ -117,12 +117,12 @@
             <!-- City Column -->
             <ng-container matColumnDef="city">
                 <th *matHeaderCellDef>
-                    <span class="ml-2">
+                    <span class="ml-1">
                   Ville
                 </span>
                 </th>
                 <td *matCellDef="let element">
-                    <span class="ml-2">
+                    <span>
                   {{element.city}}
                 </span>
                 </td>
@@ -131,12 +131,12 @@
             <!-- status  Column -->
             <ng-container matColumnDef="status">
                 <th *matHeaderCellDef>
-                    <span class="ml-2">
+                    <span class="ml-1">
                   Status
                 </span>
                 </th>
                 <td *matCellDef="let element">
-                    <span class="ml-2">
+                    <span>
                   {{element.status}}
                 </span>
                 </td>
@@ -144,17 +144,15 @@
             <!-- Created date Column -->
             <ng-container matColumnDef="actions">
                 <th *matHeaderCellDef>
-                    <span class="ml-2">
+                    <span class="ml-1">
                   Actions
                 </span>
                 </th>
                 <td *matCellDef="let element">
-                    <span class="ml-2">
-                  <button mat-button (click)="openPatientPage(element)"
-                    class="btn-border mr-2" color="primary" >Voir detail</button>
-                  <button mat-button (click)="openConfirmDeleteUserDialog(element)"
-                   class="btn btn-danger btn-border mr-2" >Supprimer</button>
-                </span>
+                    <span>
+                    <span mat-button (click)="openPatientPage(element)"class="btn btn-light mr-2 mb-1">Detail</span>
+                    <span mat-button (click)="openConfirmDeleteUserDialog(element)" class="btn btn-danger">Suppr</span>
+                    </span>
                 </td>
             </ng-container>
 

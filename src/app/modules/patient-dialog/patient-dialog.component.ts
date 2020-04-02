@@ -107,7 +107,5 @@ export class PatientDialogComponent implements OnInit {
           this.dialogRef.close();
         });
     }
-
-    // console.log(JSON.stringify(this.project));
   }
 }
